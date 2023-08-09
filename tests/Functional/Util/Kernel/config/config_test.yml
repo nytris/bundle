@@ -1,0 +1,9 @@
+---
+nytris:
+    boost:
+        # Use the special test cache pool during testing whose service is defined just below.
+        cache_pool_service: Nytris\Bundle\Tests\Functional\Util\TestCachePool
+        cache_prefix: '__test_'
+
+services:
+    Nytris\Bundle\Tests\Functional\Util\TestCachePool: ~
