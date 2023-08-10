@@ -19,13 +19,13 @@ use Psr\Cache\CacheItemInterface;
 use Psr\Cache\CacheItemPoolInterface;
 
 /**
- * Class TestKernel.
+ * Class TestRealpathCachePool.
  *
- * Kernel that is solely used for functional testing of the bundle.
+ * Cache pool that is solely used during functional testing of the bundle.
  *
  * @author Dan Phillimore <dan@ovms.co>
  */
-class TestCachePool implements CacheItemPoolInterface
+class TestRealpathCachePool implements CacheItemPoolInterface
 {
     private static array $itemsByKey = [];
 
@@ -82,7 +82,7 @@ class TestCachePool implements CacheItemPoolInterface
 
     public function saveDeferred(CacheItemInterface $item)
     {
-        throw new BadMethodCallException(__METHOD__ . '(): Not implemented');
+        return true;
     }
 
     public static function stubItem(string $key, CacheItemInterface $item): void

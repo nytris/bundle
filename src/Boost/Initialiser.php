@@ -13,9 +13,8 @@ declare(strict_types=1);
 
 namespace Nytris\Bundle\Boost;
 
-use Asmblah\PhpCodeShift\CodeShift;
-use Nytris\Boost\Shift\FsCache\FsCacheShiftSpec;
-use Nytris\Boost\Shift\FsCache\FsCacheShiftType;
+use Nytris\Boost\Boost;
+use Nytris\Boost\FsCache\FsCacheInterface;
 use Psr\Cache\CacheItemPoolInterface;
 
 /**
@@ -26,8 +25,11 @@ use Psr\Cache\CacheItemPoolInterface;
 class Initialiser
 {
     public function __construct(
-        private readonly ?CacheItemPoolInterface $cachePool,
-        private readonly string $cachePrefix = '__nytris_boost_'
+        private readonly ?CacheItemPoolInterface $realpathCachePool,
+        private readonly ?CacheItemPoolInterface $statCachePool,
+        private readonly string $realpathCacheKey = FsCacheInterface::DEFAULT_REALPATH_CACHE_KEY,
+        private readonly string $statCacheKey = FsCacheInterface::DEFAULT_STAT_CACHE_KEY,
+        private readonly bool $hookBuiltinFunctions = true
     ) {
     }
 
@@ -36,15 +38,14 @@ class Initialiser
      */
     public function initialise(): void
     {
-        $codeShift = new CodeShift();
-        $codeShift->registerShiftType(new FsCacheShiftType());
-
-        $codeShift->shift(
-            new FsCacheShiftSpec(
-                $codeShift,
-                $this->cachePool,
-                $this->cachePrefix
-            )
+        $boost = new Boost(
+            realpathCachePool: $this->realpathCachePool,
+            statCachePool: $this->statCachePool,
+            realpathCacheKey: $this->realpathCacheKey,
+            statCacheKey: $this->statCacheKey,
+            hookBuiltinFunctions: $this->hookBuiltinFunctions
         );
+
+        $boost->install();
     }
 }

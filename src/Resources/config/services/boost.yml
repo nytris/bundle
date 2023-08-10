@@ -5,7 +5,5 @@ services:
         public: false
 
     Nytris\Bundle\Boost\Initialiser:
-        arguments:
-            - ~ # Will be populated by NytrisExtension,
-            - ~ # if configured.
+        # Arguments will be populated by NytrisExtension, if configured.
         public: true

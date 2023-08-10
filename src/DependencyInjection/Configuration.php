@@ -34,8 +34,11 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->arrayNode('boost')
                     ->children()
-                        ->scalarNode('cache_pool_service')->end()
-                        ->scalarNode('cache_prefix')->end()
+                        ->scalarNode('realpath_cache_pool_service')->end()
+                        ->scalarNode('realpath_cache_key')->end()
+                        ->scalarNode('stat_cache_pool_service')->end()
+                        ->scalarNode('stat_cache_key')->end()
+                        ->booleanNode('hook_builtin_functions')->end()
                     ->end()
                 ->end()
             ->end();

@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Nytris\Bundle\Tests\Functional;
 
-use Asmblah\PhpCodeShift\CodeShift;
 use Mockery\MockInterface;
-use Nytris\Bundle\Tests\Functional\Util\TestCachePool;
+use Nytris\Bundle\Tests\Functional\Util\TestRealpathCachePool;
+use Nytris\Bundle\Tests\Functional\Util\TestStatCachePool;
 use Psr\Cache\CacheItemInterface;
 
 /**
@@ -25,7 +25,6 @@ use Psr\Cache\CacheItemInterface;
  */
 class StatCachingTest extends AbstractKernelTestCase
 {
-    private ?CodeShift $codeShift;
     /**
      * @var (MockInterface&CacheItemInterface)|null
      */
@@ -50,12 +49,12 @@ class StatCachingTest extends AbstractKernelTestCase
             'set' => null,
         ]);
 
-        TestCachePool::stubItem(
-            '__test_realpath_cache',
+        TestRealpathCachePool::stubItem(
+            '__my_realpath_cache',
             $this->realpathCacheItem
         );
-        TestCachePool::stubItem(
-            '__test_stat_cache',
+        TestStatCachePool::stubItem(
+            '__my_stat_cache',
             $this->statCacheItem
         );
     }
@@ -64,7 +63,8 @@ class StatCachingTest extends AbstractKernelTestCase
     {
         parent::tearDown();
 
-        TestCachePool::resetStubs();
+        TestRealpathCachePool::resetStubs();
+        TestStatCachePool::resetStubs();
     }
 
     public function testStatCacheCanRepointAPathToADifferentInode(): void

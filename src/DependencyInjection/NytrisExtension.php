@@ -37,8 +37,11 @@ class NytrisExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $cachePoolServiceId = $config['boost']['cache_pool_service'];
-        $cachePrefix = $config['boost']['cache_prefix'];
+        $realpathCachePoolServiceId = $config['boost']['realpath_cache_pool_service'] ?? null;
+        $realpathCacheKey = $config['boost']['realpath_cache_key'] ?? null;
+        $statCachePoolServiceId = $config['boost']['stat_cache_pool_service'] ?? null;
+        $statCacheKey = $config['boost']['stat_cache_key'] ?? null;
+        $hookBuiltinFunctions = $config['boost']['hook_builtin_functions'] ?? true;
 
         $fileLocator = new FileLocator(__DIR__ . '/../Resources/config');
         $loader = new DirectoryLoader($container, $fileLocator);
@@ -50,7 +53,23 @@ class NytrisExtension extends Extension
         $loader->load('services/');
 
         $definition = $container->findDefinition(Initialiser::class);
-        $definition->replaceArgument(0, new Reference($cachePoolServiceId));
-        $definition->replaceArgument(1, $cachePrefix);
+
+        if ($realpathCachePoolServiceId !== null) {
+            $definition->setArgument(0, new Reference($realpathCachePoolServiceId));
+        }
+
+        if ($statCachePoolServiceId !== null) {
+            $definition->setArgument(1, new Reference($statCachePoolServiceId));
+        }
+
+        if ($realpathCacheKey !== null) {
+            $definition->setArgument(2, $realpathCacheKey);
+        }
+
+        if ($statCacheKey !== null) {
+            $definition->setArgument(3, $statCacheKey);
+        }
+
+        $definition->setArgument(4, $hookBuiltinFunctions);
     }
 }
