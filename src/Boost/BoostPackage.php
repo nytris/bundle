@@ -15,14 +15,17 @@ namespace Nytris\Bundle\Boost;
 
 use Nytris\Boost\Boost;
 use Nytris\Boost\FsCache\FsCacheInterface;
+use Nytris\Bundle\Package\PackageInterface;
 use Psr\Cache\CacheItemPoolInterface;
 
 /**
- * Class Initialiser.
+ * Class BoostPackage.
+ *
+ * Initialises the Nytris Boost package.
  *
  * @author Dan Phillimore <dan@ovms.co>
  */
-class Initialiser
+class BoostPackage implements PackageInterface
 {
     public function __construct(
         private readonly ?CacheItemPoolInterface $realpathCachePool,
@@ -34,7 +37,7 @@ class Initialiser
     }
 
     /**
-     * Initialises Nytris Boost.
+     * @inheritDoc
      */
     public function initialise(): void
     {

@@ -1,4 +1,6 @@
----
+framework:
+    test: true
+
 nytris:
     boost:
         # Use the special test cache pools during testing whose services are defined just below.

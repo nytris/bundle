@@ -13,8 +13,10 @@ declare(strict_types=1);
 
 namespace Nytris\Bundle\DependencyInjection;
 
-use Nytris\Bundle\Boost\Initialiser;
+use Nytris\Bundle\Boost\BoostPackage;
+use Nytris\Bundle\Package\Initialiser;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Loader\LoaderResolver;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\DirectoryLoader;
@@ -32,17 +34,12 @@ class NytrisExtension extends Extension
     /**
      * @inheritdoc
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $realpathCachePoolServiceId = $config['boost']['realpath_cache_pool_service'] ?? null;
-        $realpathCacheKey = $config['boost']['realpath_cache_key'] ?? null;
-        $statCachePoolServiceId = $config['boost']['stat_cache_pool_service'] ?? null;
-        $statCacheKey = $config['boost']['stat_cache_key'] ?? null;
-        $hookBuiltinFunctions = $config['boost']['hook_builtin_functions'] ?? true;
-
+        // Import common configuration.
         $fileLocator = new FileLocator(__DIR__ . '/../Resources/config');
         $loader = new DirectoryLoader($container, $fileLocator);
         $yamlFileLoader = new YamlFileLoader($container, $fileLocator);
@@ -52,24 +49,51 @@ class NytrisExtension extends Extension
         ]));
         $loader->load('services/');
 
-        $definition = $container->findDefinition(Initialiser::class);
+        // Configure Nytris Boost, if enabled.
+        $this->configureBoost($container, $loader, $config);
+    }
+
+    /**
+     * Configures Nytris Boost, if it is enabled.
+     */
+    private function configureBoost(ContainerBuilder $container, LoaderInterface $loader, array $config): void
+    {
+        $boostConfig = $config['boost'] ?? null;
+
+        if ($boostConfig === null) {
+            // Boost is not configured, therefore it is disabled.
+            return;
+        }
+
+        $realpathCachePoolServiceId = $boostConfig['realpath_cache_pool_service'] ?? null;
+        $realpathCacheKey = $boostConfig['realpath_cache_key'] ?? null;
+        $statCachePoolServiceId = $boostConfig['stat_cache_pool_service'] ?? null;
+        $statCacheKey = $boostConfig['stat_cache_key'] ?? null;
+        $hookBuiltinFunctions = $boostConfig['hook_builtin_functions'] ?? true;
+
+        $loader->load('packages/boost/');
+
+        $packageDefinition = $container->findDefinition(BoostPackage::class);
 
         if ($realpathCachePoolServiceId !== null) {
-            $definition->setArgument(0, new Reference($realpathCachePoolServiceId));
+            $packageDefinition->setArgument(0, new Reference($realpathCachePoolServiceId));
         }
 
         if ($statCachePoolServiceId !== null) {
-            $definition->setArgument(1, new Reference($statCachePoolServiceId));
+            $packageDefinition->setArgument(1, new Reference($statCachePoolServiceId));
         }
 
         if ($realpathCacheKey !== null) {
-            $definition->setArgument(2, $realpathCacheKey);
+            $packageDefinition->setArgument(2, $realpathCacheKey);
         }
 
         if ($statCacheKey !== null) {
-            $definition->setArgument(3, $statCacheKey);
+            $packageDefinition->setArgument(3, $statCacheKey);
         }
 
-        $definition->setArgument(4, $hookBuiltinFunctions);
+        $packageDefinition->setArgument(4, $hookBuiltinFunctions);
+
+        $initialiserDefinition = $container->findDefinition(Initialiser::class);
+        $initialiserDefinition->addMethodCall('registerPackage', [new Reference(BoostPackage::class)]);
     }
 }

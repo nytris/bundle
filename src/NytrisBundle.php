@@ -13,11 +13,13 @@ declare(strict_types=1);
 
 namespace Nytris\Bundle;
 
-use Nytris\Bundle\Boost\Initialiser;
+use Nytris\Bundle\Package\Initialiser;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * Class NytrisBundle.
+ *
+ * Configures Nytris for a Symfony application.
  *
  * @author Dan Phillimore <dan@ovms.co>
  */

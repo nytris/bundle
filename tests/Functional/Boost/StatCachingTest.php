@@ -11,9 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Nytris\Bundle\Tests\Functional;
+namespace Nytris\Bundle\Tests\Functional\Boost;
 
 use Mockery\MockInterface;
+use Nytris\Bundle\Tests\Functional\AbstractKernelTestCase;
 use Nytris\Bundle\Tests\Functional\Util\TestRealpathCachePool;
 use Nytris\Bundle\Tests\Functional\Util\TestStatCachePool;
 use Psr\Cache\CacheItemInterface;
@@ -69,8 +70,8 @@ class StatCachingTest extends AbstractKernelTestCase
 
     public function testStatCacheCanRepointAPathToADifferentInode(): void
     {
-        $actualPath = __DIR__ . '/Fixtures/my_actual_file.php';
-        $imaginaryPath = __DIR__ . '/Fixtures/my_imaginary_file.php';
+        $actualPath = __DIR__ . '/../Fixtures/my_actual_file.php';
+        $imaginaryPath = __DIR__ . '/../Fixtures/my_imaginary_file.php';
         $actualPathStat = stat($actualPath);
         $this->realpathCacheItem->allows()
             ->get()

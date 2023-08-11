@@ -1,0 +1,4 @@
+framework:
+    test: true
+
+# (Nytris Boost is not configured, therefore disabled.)

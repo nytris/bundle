@@ -27,28 +27,46 @@ use Psr\Cache\CacheItemPoolInterface;
  */
 class TestRealpathCachePool implements CacheItemPoolInterface
 {
+    /**
+     * @var array<string, CacheItemInterface>
+     */
     private static array $itemsByKey = [];
 
+    /**
+     * @inheritDoc
+     */
     public function clear()
     {
         throw new BadMethodCallException(__METHOD__ . '(): Not implemented');
     }
 
+    /**
+     * @inheritDoc
+     */
     public function commit()
     {
         throw new BadMethodCallException(__METHOD__ . '(): Not implemented');
     }
 
+    /**
+     * @inheritDoc
+     */
     public function deleteItem($key)
     {
         throw new BadMethodCallException(__METHOD__ . '(): Not implemented');
     }
 
+    /**
+     * @inheritDoc
+     */
     public function deleteItems(array $keys)
     {
         throw new BadMethodCallException(__METHOD__ . '(): Not implemented');
     }
 
+    /**
+     * @inheritDoc
+     */
     public function getItem($key)
     {
         if (!array_key_exists($key, static::$itemsByKey)) {
@@ -60,31 +78,49 @@ class TestRealpathCachePool implements CacheItemPoolInterface
         return static::$itemsByKey[$key];
     }
 
+    /**
+     * @inheritDoc
+     */
     public function getItems(array $keys = array())
     {
         throw new BadMethodCallException(__METHOD__ . '(): Not implemented');
     }
 
+    /**
+     * @inheritDoc
+     */
     public function hasItem($key)
     {
         throw new BadMethodCallException(__METHOD__ . '(): Not implemented');
     }
 
+    /**
+     * Clears all stubbed cache items.
+     */
     public static function resetStubs(): void
     {
         static::$itemsByKey = [];
     }
 
+    /**
+     * @inheritDoc
+     */
     public function save(CacheItemInterface $item)
     {
         throw new BadMethodCallException(__METHOD__ . '(): Not implemented');
     }
 
+    /**
+     * @inheritDoc
+     */
     public function saveDeferred(CacheItemInterface $item)
     {
         return true;
     }
 
+    /**
+     * Stubs a cache item.
+     */
     public static function stubItem(string $key, CacheItemInterface $item): void
     {
         static::$itemsByKey[$key] = $item;

@@ -4,6 +4,5 @@ services:
         autoconfigure: true
         public: false
 
-    Nytris\Bundle\Boost\Initialiser:
-        # Arguments will be populated by NytrisExtension, if configured.
+    Nytris\Bundle\Package\Initialiser:
         public: true
