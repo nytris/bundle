@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Nytris\Bundle\Boost;
+namespace Nytris\Bundle\Package\Package;
 
 use Nytris\Boost\Boost;
 use Nytris\Boost\FsCache\FsCacheInterface;

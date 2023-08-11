@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Nytris\Bundle\Tests\Functional\Boost;
 
-use Nytris\Bundle\Boost\BoostPackage;
 use Nytris\Bundle\Package\Initialiser;
+use Nytris\Bundle\Package\Package\BoostPackage;
 use Nytris\Bundle\Tests\Functional\AbstractKernelTestCase;
 use Nytris\Bundle\Tests\Functional\Util\TestRealpathCachePool;
 use Nytris\Bundle\Tests\Functional\Util\TestStatCachePool;

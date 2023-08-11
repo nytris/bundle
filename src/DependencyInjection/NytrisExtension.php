@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Nytris\Bundle\DependencyInjection;
 
-use Nytris\Bundle\Boost\BoostPackage;
 use Nytris\Bundle\Package\Initialiser;
+use Nytris\Bundle\Package\Package\BoostPackage;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Loader\LoaderResolver;
