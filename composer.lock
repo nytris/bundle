@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/asmblah/php-code-shift.git",
-                "reference": "390f27f65445c4d18fedde829c89a48a5a16dc01"
+                "reference": "ea52eb357a3c6dd6dddb025510c75573619deef5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asmblah/php-code-shift/zipball/390f27f65445c4d18fedde829c89a48a5a16dc01",
-                "reference": "390f27f65445c4d18fedde829c89a48a5a16dc01",
+                "url": "https://api.github.com/repos/asmblah/php-code-shift/zipball/ea52eb357a3c6dd6dddb025510c75573619deef5",
+                "reference": "ea52eb357a3c6dd6dddb025510c75573619deef5",
                 "shasum": ""
             },
             "require": {
@@ -46,7 +46,7 @@
                 "issues": "https://github.com/asmblah/php-code-shift/issues",
                 "source": "https://github.com/asmblah/php-code-shift/tree/main"
             },
-            "time": "2023-08-10T19:33:48+00:00"
+            "time": "2023-08-11T15:27:14+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -110,12 +110,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nytris/boost.git",
-                "reference": "5f9e32f1cbbec8ce315104e037d64c10aa3fe277"
+                "reference": "c00a0e6a65510897c7061350cb5eb847b901a78a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nytris/boost/zipball/5f9e32f1cbbec8ce315104e037d64c10aa3fe277",
-                "reference": "5f9e32f1cbbec8ce315104e037d64c10aa3fe277",
+                "url": "https://api.github.com/repos/nytris/boost/zipball/c00a0e6a65510897c7061350cb5eb847b901a78a",
+                "reference": "c00a0e6a65510897c7061350cb5eb847b901a78a",
                 "shasum": ""
             },
             "require": {
@@ -142,7 +142,7 @@
                 "issues": "https://github.com/nytris/boost/issues",
                 "source": "https://github.com/nytris/boost/tree/main"
             },
-            "time": "2023-08-10T22:22:19+00:00"
+            "time": "2023-08-11T15:33:21+00:00"
         },
         {
             "name": "psr/cache",
