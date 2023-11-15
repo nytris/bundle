@@ -11,19 +11,22 @@
 
 declare(strict_types=1);
 
-namespace Nytris\Bundle\Package;
+namespace Nytris\Bundle\Tests\Functional\Util\Plugin;
+
+use Nytris\Core\Package\PackageInterface;
 
 /**
- * Interface PackageInterface.
- *
- * Implemented for each supported Nytris package.
+ * Class TestPackage.
  *
  * @author Dan Phillimore <dan@ovms.co>
  */
-interface PackageInterface
+class TestPackage implements PackageInterface
 {
     /**
-     * Initialises the package.
+     * @inheritDoc
      */
-    public function initialise(): void;
+    public function getPackageFacadeFqcn(): string
+    {
+        return TestPackageFacade::class;
+    }
 }

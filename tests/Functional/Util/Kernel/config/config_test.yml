@@ -1,14 +1,2 @@
 framework:
     test: true
-
-nytris:
-    boost:
-        # Use the special test cache pools during testing whose services are defined just below.
-        realpath_cache_pool_service: Nytris\Bundle\Tests\Functional\Util\TestRealpathCachePool
-        stat_cache_pool_service: Nytris\Bundle\Tests\Functional\Util\TestStatCachePool
-        realpath_cache_key: '__my_realpath_cache'
-        stat_cache_key: '__my_stat_cache'
-
-services:
-    Nytris\Bundle\Tests\Functional\Util\TestRealpathCachePool: ~
-    Nytris\Bundle\Tests\Functional\Util\TestStatCachePool: ~

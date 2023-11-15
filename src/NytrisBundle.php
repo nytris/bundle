@@ -13,7 +13,8 @@ declare(strict_types=1);
 
 namespace Nytris\Bundle;
 
-use Nytris\Bundle\Package\Initialiser;
+use Nytris\Bundle\Plugin\PluginRepository;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -25,10 +26,23 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class NytrisBundle extends Bundle
 {
+    /**
+     * @inheritDoc
+     */
     public function boot(): void
     {
-        $initialiser = $this->container->get(Initialiser::class);
+        foreach (PluginRepository::getPlugins() as $plugin) {
+            $plugin->boot($this->container);
+        }
+    }
 
-        $initialiser->initialise();
+    /**
+     * @inheritDoc
+     */
+    public function build(ContainerBuilder $container): void
+    {
+        foreach (PluginRepository::getPlugins() as $plugin) {
+            $plugin->build($container);
+        }
     }
 }

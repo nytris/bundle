@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ef0048dff9e85bc03b15ff97a276a61",
+    "content-hash": "6c15409499fa466e1b0b0aae663b4838",
     "packages": [
         {
             "name": "asmblah/php-code-shift",
@@ -105,33 +105,35 @@
             "time": "2023-06-25T14:52:30+00:00"
         },
         {
-            "name": "nytris/boost",
-            "version": "dev-main",
+            "name": "nytris/nytris",
+            "version": "v0.1.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/nytris/boost.git",
-                "reference": "c00a0e6a65510897c7061350cb5eb847b901a78a"
+                "url": "https://github.com/nytris/nytris.git",
+                "reference": "34f5a9a35ad0b2b2909a6c1f67244fab86dd1303"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nytris/boost/zipball/c00a0e6a65510897c7061350cb5eb847b901a78a",
-                "reference": "c00a0e6a65510897c7061350cb5eb847b901a78a",
+                "url": "https://api.github.com/repos/nytris/nytris/zipball/34f5a9a35ad0b2b2909a6c1f67244fab86dd1303",
+                "reference": "34f5a9a35ad0b2b2909a6c1f67244fab86dd1303",
                 "shasum": ""
             },
             "require": {
-                "asmblah/php-code-shift": "@dev",
-                "php": ">=8.1",
-                "psr/cache": "^1.0"
+                "php": ">=8.1"
             },
             "require-dev": {
                 "mockery/mockery": "^1.6",
+                "phpstan/phpstan": "^1.10",
+                "phpstan/phpstan-mockery": "^1.1",
                 "phpunit/phpunit": "^10.2"
             },
-            "default-branch": true,
             "type": "project",
             "autoload": {
+                "files": [
+                    "src/bootstrap.php"
+                ],
                 "psr-4": {
-                    "Nytris\\Boost\\": "src/"
+                    "Nytris\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -139,59 +141,10 @@
                 "MIT"
             ],
             "support": {
-                "issues": "https://github.com/nytris/boost/issues",
-                "source": "https://github.com/nytris/boost/tree/main"
+                "issues": "https://github.com/nytris/nytris/issues",
+                "source": "https://github.com/nytris/nytris/tree/v0.1.3"
             },
-            "time": "2023-08-11T15:33:21+00:00"
-        },
-        {
-            "name": "psr/cache",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/cache.git",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/cache/zipball/d11b50ad223250cf17b86e38383413f5a6764bf8",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Cache\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for caching libraries",
-            "keywords": [
-                "cache",
-                "psr",
-                "psr-6"
-            ],
-            "support": {
-                "source": "https://github.com/php-fig/cache/tree/master"
-            },
-            "time": "2016-08-06T20:24:11+00:00"
+            "time": "2023-11-15T07:09:23+00:00"
         },
         {
             "name": "psr/container",
@@ -1903,6 +1856,46 @@
             "time": "2023-03-08T13:26:56+00:00"
         },
         {
+            "name": "nytris/boost",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nytris/boost.git",
+                "reference": "c00a0e6a65510897c7061350cb5eb847b901a78a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nytris/boost/zipball/c00a0e6a65510897c7061350cb5eb847b901a78a",
+                "reference": "c00a0e6a65510897c7061350cb5eb847b901a78a",
+                "shasum": ""
+            },
+            "require": {
+                "asmblah/php-code-shift": "@dev",
+                "php": ">=8.1",
+                "psr/cache": "^1.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.6",
+                "phpunit/phpunit": "^10.2"
+            },
+            "default-branch": true,
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "Nytris\\Boost\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "support": {
+                "issues": "https://github.com/nytris/boost/issues",
+                "source": "https://github.com/nytris/boost/tree/main"
+            },
+            "time": "2023-08-11T15:33:21+00:00"
+        },
+        {
             "name": "phar-io/manifest",
             "version": "2.0.3",
             "source": {
@@ -2012,6 +2005,118 @@
                 "source": "https://github.com/phar-io/version/tree/3.2.1"
             },
             "time": "2022-02-21T01:04:05+00:00"
+        },
+        {
+            "name": "phpstan/phpstan",
+            "version": "1.10.41",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpstan.git",
+                "reference": "c6174523c2a69231df55bdc65b61655e72876d76"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c6174523c2a69231df55bdc65b61655e72876d76",
+                "reference": "c6174523c2a69231df55bdc65b61655e72876d76",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2|^8.0"
+            },
+            "conflict": {
+                "phpstan/phpstan-shim": "*"
+            },
+            "bin": [
+                "phpstan",
+                "phpstan.phar"
+            ],
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHPStan - PHP Static Analysis Tool",
+            "keywords": [
+                "dev",
+                "static analysis"
+            ],
+            "support": {
+                "docs": "https://phpstan.org/user-guide/getting-started",
+                "forum": "https://github.com/phpstan/phpstan/discussions",
+                "issues": "https://github.com/phpstan/phpstan/issues",
+                "security": "https://github.com/phpstan/phpstan/security/policy",
+                "source": "https://github.com/phpstan/phpstan-src"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/ondrejmirtes",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/phpstan",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/phpstan/phpstan",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-11-05T12:57:57+00:00"
+        },
+        {
+            "name": "phpstan/phpstan-mockery",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpstan-mockery.git",
+                "reference": "6aa86bd8e9c9a1be97baf0558d4a2ed1374736a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpstan-mockery/zipball/6aa86bd8e9c9a1be97baf0558d4a2ed1374736a6",
+                "reference": "6aa86bd8e9c9a1be97baf0558d4a2ed1374736a6",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0",
+                "phpstan/phpstan": "^1.10"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.2.4",
+                "nikic/php-parser": "^4.13.0",
+                "php-parallel-lint/php-parallel-lint": "^1.2",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpstan/phpstan-strict-rules": "^1.0",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "phpstan-extension",
+            "extra": {
+                "phpstan": {
+                    "includes": [
+                        "extension.neon"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PHPStan\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHPStan Mockery extension",
+            "support": {
+                "issues": "https://github.com/phpstan/phpstan-mockery/issues",
+                "source": "https://github.com/phpstan/phpstan-mockery/tree/1.1.1"
+            },
+            "time": "2023-02-18T13:54:03+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -2433,6 +2538,55 @@
                 }
             ],
             "time": "2023-08-04T06:48:08+00:00"
+        },
+        {
+            "name": "psr/cache",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/cache.git",
+                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/cache/zipball/d11b50ad223250cf17b86e38383413f5a6764bf8",
+                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Cache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for caching libraries",
+            "keywords": [
+                "cache",
+                "psr",
+                "psr-6"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/cache/tree/master"
+            },
+            "time": "2016-08-06T20:24:11+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -3963,5 +4117,5 @@
     "platform-overrides": {
         "php": "8.1"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

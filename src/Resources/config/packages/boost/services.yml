@@ -1,9 +1,0 @@
-services:
-    _defaults:
-        autowire: true
-        autoconfigure: true
-        public: false
-
-    Nytris\Bundle\Package\Package\BoostPackage:
-        # Arguments will be populated by NytrisExtension, if configured.
-        public: true
