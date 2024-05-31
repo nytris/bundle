@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/nytris/bundle/workflows/CI/badge.svg)](https://github.com/nytris/bundle/actions?query=workflow%3ACI)
 
-Integrates [Nytris Boost][1] into a Symfony application.
+Integrates [Nytris][Nytris] packages into a [Symfony][Symfony] application via plugins.
 
 ## Usage
 Install this package with Composer:
@@ -11,7 +11,18 @@ Install this package with Composer:
 $ composer install nytris/bundle
 ```
 
-## See also
-- [Nytris Boost][1], which is used by this library.
+## Plugins
+Install one or more plugins as required:
 
-[1]: https://github.com/nytris/boost
+- [Envoylope AMQP-Compat][Envoylope AMQP-Compat] for integrating [PHP AMQP-Compat][PHP AMQP-Compat] into a Symfony application.
+- [Nytris Shift Symfony][Nytris Shift Symfony] for integrating [PHP Code Shift][PHP Code Shift] into a Symfony application.
+
+See the respective READMEs for each plugin and [Nytris][Nytris] itself for configuration instructions,
+but usually a Nytris Bundle plugin will automatically be registered with the Bundle itself on installation.
+
+[Envoylope AMQP-Compat]: https://github.com/envoylope/amqp-symfony
+[Nytris]: https://github.com/nytris/nytris
+[Nytris Shift Symfony]: https://github.com/nytris/shift-symfony
+[PHP AMQP-Compat]: https://github.com/asmblah/php-amqp-compat
+[PHP Code Shift]: https://github.com/asmblah/php-code-shift
+[Symfony]: https://symfony.com
